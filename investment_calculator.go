@@ -26,10 +26,14 @@ func main() {
 
 
 
-	formattedFV := fmt.Sprintf("Future Value: %.2f\n", futureValue)
-	formattedRFV := fmt.Sprintf("Future Value (adjusted for inflation): %.2f\n", futureRealValue)
-	fmt.Print(formattedFV, formattedRFV)
-	//fmt.Println("Future Value: ", futureValue)
-	// fmt.Printf("Future Value: %.2f\n", futureValue)
+	// formattedFV := fmt.Sprintf("Future Value: %.2f\n", futureValue)
+	// formattedRFV := fmt.Sprintf("Future Value (adjusted for inflation): %.2f\n", futureRealValue)
+	// fmt.Print(formattedFV, formattedRFV)
+	// fmt.Println("Future Value: ", futureValue)
+
+	// the backtick will use the format we have set. So if there are newline or tabs they will be shown
+	fmt.Printf(`Future Value: %.2f\n 
+				Future Value (adjusted for inflation): %.2f`, futureValue, futureRealValue)
+
 	// fmt.Printf("Future Value (adjusted for inflation): %.2f", futureRealValue)
 }
