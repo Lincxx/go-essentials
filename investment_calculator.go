@@ -49,9 +49,12 @@ func outputText(text string) {
 	fmt.Print(text)
 }
 
-func calculateFutureValues(investmentAmount float64 , expectedReturnRate float64,  years float64) (float64, float64) {
+func calculateFutureValues(investmentAmount float64 , expectedReturnRate float64,  years float64) (fv float64, rfv float64) {
 	//we can return multiple with a comma at the end of the first return
-	fv := investmentAmount * math.Pow(1 + expectedReturnRate / 100, years)
-	rfv := fv / math.Pow(1 + inflationRate/100, years)
+	fv = investmentAmount * math.Pow(1 + expectedReturnRate / 100, years)
+	rfv = fv / math.Pow(1 + inflationRate/100, years)
 	return fv, rfv
+	
+	//Go will return the return variable we set in the function return
+	//return
 }
