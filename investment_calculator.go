@@ -12,13 +12,16 @@ func main() {
 	expectedReturnRate := 5.5
 	
 
-	fmt.Print("Investment Amount: ")
+	//fmt.Print("Investment Amount: ")
+	outputText("Investment Amount: ")
 	fmt.Scan(&investmentAmount)
 
-	fmt.Print("Expected Return Rate: ")
+	//fmt.Print("Expected Return Rate: ")
+	outputText("Expected Return Rate: ")
 	fmt.Scan(&expectedReturnRate)
 
-	fmt.Print("How many years: ")
+	//fmt.Print("How many years: ")
+	outputText("How many years: ")
 	fmt.Scan(&years)
 
 	futureValue := investmentAmount * math.Pow(1 + expectedReturnRate / 100, years)
@@ -32,8 +35,12 @@ func main() {
 	// fmt.Println("Future Value: ", futureValue)
 
 	// the backtick will use the format we have set. So if there are newline or tabs they will be shown
-	fmt.Printf(`Future Value: %.2f\n 
-				Future Value (adjusted for inflation): %.2f`, futureValue, futureRealValue)
+	// fmt.Printf(`Future Value: %.2f\n 
+	// 			Future Value (adjusted for inflation): %.2f`, futureValue, futureRealValue)
 
 	// fmt.Printf("Future Value (adjusted for inflation): %.2f", futureRealValue)
+}
+
+func outputText(text string) {
+	fmt.Print(text)
 }
