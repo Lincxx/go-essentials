@@ -29,12 +29,29 @@ func main() {
 		fmt.Println("Your deposit:")
 		var depositAmount float64
 		fmt.Scan(&depositAmount)
+
+		if depositAmount <= 0 {
+			fmt.Println("Invalid amount. Must be greater that 0")
+			return
+		}
+
 		accountBalance += depositAmount
 		fmt.Println("New Balance:", accountBalance)
 	} else if choice == 3 {
 		fmt.Println("Withdrawal amount:")
 		var withdrawalAmount float64
 		fmt.Scan(&withdrawalAmount)
+
+		if withdrawalAmount > accountBalance {
+			fmt.Println("Invaild amount. You dont have that amount to withdraw")
+			return
+		}
+
+		if withdrawalAmount <= 0 {
+			fmt.Println("Invalid amount. Must be greater that 0")
+			return
+		}
+
 		accountBalance -= withdrawalAmount
 		fmt.Println("New Balance:", accountBalance)
 	} else {
