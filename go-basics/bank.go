@@ -26,9 +26,11 @@ func main() {
 		//wantsCheckBalance := choice == 1
 
 		//preform action based on the user selection
-		if choice == 1{
+
+		switch choice {
+		case 1:
 			fmt.Println("Your balance is:", accountBalance)
-		} else if choice == 2 {
+		case 2: 
 			fmt.Println("Your deposit:")
 			var depositAmount float64
 			fmt.Scan(&depositAmount)
@@ -41,7 +43,7 @@ func main() {
 
 			accountBalance += depositAmount
 			fmt.Println("New Balance:", accountBalance)
-		} else if choice == 3 {
+		case 3:
 			fmt.Println("Withdrawal amount:")
 			var withdrawalAmount float64
 			fmt.Scan(&withdrawalAmount)
@@ -60,12 +62,12 @@ func main() {
 
 			accountBalance -= withdrawalAmount
 			fmt.Println("New Balance:", accountBalance)
-		} else {
+		default:
 			fmt.Println("Have a nice day")
-			//return
-			break
+			fmt.Println("Thanks for choosing our bank")
+			return
 		}
 	}
-	fmt.Println("Thanks for choosing our bank")
+	
 	
 }
