@@ -6,13 +6,14 @@ package main
 // Importing & Using Custom Packages
 
 import (
+	"example.com/bank/fileops"
 	"fmt"
 )
 
 const accountBalanceFile = "balance.txt"
 
 func main() {
-	var accountBalance, err = getFloatFromFile(accountBalanceFile)
+	var accountBalance, err = fileops.getFloatFromFile(accountBalanceFile)
 
 	if err != nil {
 		fmt.Println("ERROR")
