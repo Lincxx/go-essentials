@@ -8,14 +8,14 @@ import (
 )
 
 // write to a file
-func writeFloatToFile(value float64, fileName string) {
+func WriteFloatToFile(value float64, fileName string) {
 	//convert the balance into a string of bytes
 	valueText := fmt.Sprint(value)
 
 	os.WriteFile(fileName, []byte(valueText), 0644)
 }
 
-func getFloatFromFile(fileName string) (float64, error) {
+func GetFloatFromFile(fileName string) (float64, error) {
 	data, err := os.ReadFile(fileName)
 
 	//err will nil if we don't have an error
