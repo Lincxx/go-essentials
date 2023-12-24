@@ -15,36 +15,36 @@ import (
 const accountBalanceFile = "balance.txt"
 
 // write to a file
-func writeBalanceToFile(balance float64) {
+func writeFloatToFile(value float64, fileName string) {
 	//convert the balance into a string of bytes
-	balanceText := fmt.Sprint(balance)
+	valueText := fmt.Sprint(value)
 
-	os.WriteFile(accountBalanceFile, []byte(balanceText), 0644)
+	os.WriteFile(fileName, []byte(valueText), 0644)
 }
 
-func getBalanceFromFile() (float64, error) {
-	data, err := os.ReadFile(accountBalanceFile)
+func getFloatFromFile(fileName string) (float64, error) {
+	data, err := os.ReadFile(fileName)
 
 	//err will nil if we don't have an error
 	if err != nil {
-		return 1000, errors.New("Failed to find balance file")
+		return 1000, errors.New("Failed to find  file")
 	}
 
 	//can only use string - float, int will not work with a byte array
-	balanceText := string(data)
+	valueText := string(data)
 	//convert string to float
-	balance, err := strconv.ParseFloat(balanceText, 64)
+	value, err := strconv.ParseFloat(valueText, 64)
 
 	if err != nil {
-		return 1000, errors.New("Failed to parse stored balance value")
+		return 1000, errors.New("Failed to parse stored value")
 	}
 
 	//we will return the balace and nil (meaning no error)
-	return balance, nil
+	return value, nil
 }
 
 func main() {
-	var accountBalance, err = getBalanceFromFile()
+	var accountBalance, err = getFloatFromFile(accountBalanceFile)
 
 	if err != nil {
 		fmt.Println("ERROR")
@@ -84,7 +84,7 @@ func main() {
 
 			accountBalance += depositAmount
 			fmt.Println("New Balance:", accountBalance)
-			writeBalanceToFile(accountBalance)
+			writeFloatToFile(accountBalance, accountBalanceFile)
 		case 3:
 			fmt.Println("Withdrawal amount:")
 			var withdrawalAmount float64
@@ -104,7 +104,7 @@ func main() {
 
 			accountBalance -= withdrawalAmount
 			fmt.Println("New Balance:", accountBalance)
-			writeBalanceToFile(accountBalance)
+			writeFloatToFile(accountBalance, accountBalanceFile)
 		default:
 			fmt.Println("Have a nice day")
 			fmt.Println("Thanks for choosing our bank")
