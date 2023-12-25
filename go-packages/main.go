@@ -6,9 +6,9 @@ package main
 // Importing & Using Custom Packages
 
 import (
-	"example.com/bank/fileops"
 	"fmt"
-	"github.com/Pallinder/go-randomdata"
+
+	"example.com/bank/fileops"
 )
 
 const accountBalanceFile = "balance.txt"
@@ -24,7 +24,7 @@ func main() {
 	}
 
 	fmt.Println("Welcome to Go Bank!!!")
-	fmt.Println(randomdata.PhoneNumber())
+	
 
 	for {
 		presentOptions()
