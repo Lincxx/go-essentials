@@ -14,16 +14,26 @@ type user struct {
 }
 
 func main() {
-	firstName := getUserData("Please enter your first name: ")
-	lastName := getUserData("Please enter your last name: ")
-	birthdate := getUserData("Please enter your birthdate (MM/DD/YYYY): ")
+	userfirstName := getUserData("Please enter your first name: ")
+	userlastName := getUserData("Please enter your last name: ")
+	userbirthdate := getUserData("Please enter your birthdate (MM/DD/YYYY): ")
 
+	var appUser user
+
+	//create and instance of the struct
+	appUser = user{
+		firstName: userfirstName,
+		lastName:  userlastName,
+		birthdate: userbirthdate,
+		createdAt: time.Now(),
+	}
 	// ... do something awesome with that gathered data!
 
-	fmt.Println(firstName, lastName, birthdate)
+	fmt.Println(userfirstName, userlastName, userbirthdate)
+	fmt.Println(appUser)
 
 	//this can be error prone. Missing value or wrong order. Might prefer a value type that groups item together (Struct)
-	outputUserDetails(firstName, lastName, birthdate)
+	//outputUserDetails(firstName, lastName, birthdate)
 }
 
 func outputUserDetails(firstName, lastName, birthdate string) {
