@@ -2,7 +2,16 @@ package main
 
 import (
 	"fmt"
+	"time"
 )
+
+// Structs are usually outside of a function
+type user struct {
+	firstName string
+	lastName  string
+	birthdate string
+	createdAt time.Time
+}
 
 func main() {
 	firstName := getUserData("Please enter your first name: ")
