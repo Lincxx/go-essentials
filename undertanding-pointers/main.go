@@ -7,8 +7,15 @@ func main() {
 	//intro to pointers
 	age := 32 //reg var
 
-	fmt.Println(age)
-	
+	//just making things clear
+	agePointer := &age
+
+	//we can also declare this in two lines of code
+	//var agePointer *int
+	//agePointer := &age
+
+	fmt.Println("Age", age)
+
 	//fmt.Println(getAdultYears())
 	//or create a helper variable
 	adultYears := getAdultYears(age)
@@ -16,6 +23,6 @@ func main() {
 
 }
 
-func getAdultYears(age int) int{
+func getAdultYears(age int) int {
 	return age - 18
 }
