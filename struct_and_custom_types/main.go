@@ -34,11 +34,13 @@ func main() {
 	//fmt.Println(appUser)
 
 	//this can be error prone. Missing value or wrong order. Might prefer a value type that groups item together (Struct)
-	outputUserDetails(appUser)
+	outputUserDetails(&appUser)
 }
 
-func outputUserDetails(u user) {
-	//fmt.Println(firstName, lastName, birthdate)
+func outputUserDetails(u *user) {
+
+	//in the pointer section we were taught to use derefence  *u, to use this we need this (*u).firstName
+	//this is using ths address and not the value of the address, this work because this is a shortcut provided by Go
 	fmt.Println(u.firstName, u.lastName, u.birthdate)
 }
 
