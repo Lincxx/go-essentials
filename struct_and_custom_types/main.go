@@ -13,6 +13,14 @@ type user struct {
 	createdAt time.Time
 }
 
+// attach to struct - the (u user) is called a receiver
+func (u user) outputUserDetails() {
+
+	//in the pointer section we were taught to use derefence  *u, to use this we need this (*u).firstName
+	//this is using ths address and not the value of the address, this work because this is a shortcut provided by Go
+	fmt.Println(u.firstName, u.lastName, u.birthdate)
+}
+
 func main() {
 	userFirstName := getUserData("Please enter your first name: ")
 	userLastName := getUserData("Please enter your last name: ")
@@ -30,18 +38,9 @@ func main() {
 
 	// ... do something awesome with that gathered data!
 
-	//fmt.Println(userFirstName, userLastName, userBirthdate)
-	//fmt.Println(appUser)
-
-	//this can be error prone. Missing value or wrong order. Might prefer a value type that groups item together (Struct)
-	outputUserDetails(&appUser)
-}
-
-func outputUserDetails(u *user) {
-
-	//in the pointer section we were taught to use derefence  *u, to use this we need this (*u).firstName
-	//this is using ths address and not the value of the address, this work because this is a shortcut provided by Go
-	fmt.Println(u.firstName, u.lastName, u.birthdate)
+	//we don't have to pass an arg, as one is not required anymore. The user struct will be pass automatically to the
+	//method
+	appUser.outputUserDetails()
 }
 
 func getUserData(promptText string) string {
