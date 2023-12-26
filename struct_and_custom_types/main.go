@@ -14,12 +14,9 @@ func main() {
 	//
 	//appUser = newUser(userFirstName, userLastName, userBirthdate)
 
-	var appUser2 *user
-	appUser2 := &user.User{
-		FirstName: userFirstName,
-		LastName:  userLastName,
-		Birthdate: userBirthdate,
-	}
+	var appUser2 *user.User
+
+	appUser2, err := user.New(userFirstName, userLastName, userBirthdate)
 
 	if err != nil {
 		fmt.Println(err)
@@ -30,9 +27,9 @@ func main() {
 
 	//we don't have to pass an arg, as one is not required anymore. The user struct will be pass automatically to the
 	//method
-	appUser2.outputUserDetails()
-	appUser2.clearUserName()
-	appUser2.outputUserDetails()
+	appUser2.OutputUserDetails()
+	appUser2.ClearUserName()
+	appUser2.OutputUserDetails()
 }
 
 func getUserData(promptText string) string {
