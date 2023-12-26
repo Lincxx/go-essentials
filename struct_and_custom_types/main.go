@@ -5,7 +5,16 @@ import (
 	"fmt"
 )
 
+type Str string
+
+func (text Str) Log() {
+	fmt.Println(text)
+}
+
 func main() {
+	var name Str = "Max"
+	name.Log()
+
 	userFirstName := getUserData("Please enter your first name: ")
 	userLastName := getUserData("Please enter your last name: ")
 	userBirthdate := getUserData("Please enter your birthdate (MM/DD/YYYY): ")
