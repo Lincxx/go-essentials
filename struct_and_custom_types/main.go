@@ -14,22 +14,30 @@ type user struct {
 }
 
 func main() {
-	userfirstName := getUserData("Please enter your first name: ")
-	userlastName := getUserData("Please enter your last name: ")
-	userbirthdate := getUserData("Please enter your birthdate (MM/DD/YYYY): ")
+	userFirstName := getUserData("Please enter your first name: ")
+	userLastName := getUserData("Please enter your last name: ")
+	userBirthdate := getUserData("Please enter your birthdate (MM/DD/YYYY): ")
 
 	var appUser user
 
-	//create and instance of the struct
+	//create and instance of the struct and we can omit values, just those values will be set to null example appUser2
 	appUser = user{
-		firstName: userfirstName,
-		lastName:  userlastName,
-		birthdate: userbirthdate,
+		firstName: userFirstName,
+		lastName:  userLastName,
+		birthdate: userBirthdate,
 		createdAt: time.Now(),
 	}
+
+	// last name and birthdate will be set to their null values
+	//var appUser2 user
+	//appUser2 = user{
+	//	firstName: userFirstName,
+	//	createdAt: time.Now(),
+	//}
+
 	// ... do something awesome with that gathered data!
 
-	fmt.Println(userfirstName, userlastName, userbirthdate)
+	fmt.Println(userFirstName, userLastName, userBirthdate)
 	fmt.Println(appUser)
 
 	//this can be error prone. Missing value or wrong order. Might prefer a value type that groups item together (Struct)
