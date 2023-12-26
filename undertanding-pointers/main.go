@@ -22,8 +22,8 @@ func main() {
 
 	//fmt.Println(getAdultYears())
 	//or create a helper variable
-	adultYears := getAdultYears(agePointer)
-	fmt.Println(adultYears)
+	//adultYears := getAdultYears(agePointer)
+	//fmt.Println(adultYears)
 
 	//editAdultYears(agePointer)
 	fmt.Println(age)
@@ -37,8 +37,4 @@ func editAdultYears(age *int) {
 	//deference - then we are overriding that value in age
 	*age = *age - 18
 	//this could be a problem or unexpected behavior, that we wrote over a variable.
-}
-
-func getAdultYears(age *int) int {
-	return *age - 18
 }
