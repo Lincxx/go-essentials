@@ -27,6 +27,26 @@ func (u *user) clearUserName() {
 	u.lastName = ""
 }
 
+// Creation / Constructor Functions (Pattern) - NOT A FEATURE BUILT IN GO
+func newUser(firstName string, lastName string, birthDate string) user {
+	return user{
+		firstName: firstName,
+		lastName:  lastName,
+		birthdate: birthDate,
+		createdAt: time.Now(),
+	}
+}
+
+// we can return this as a pointer - what this does is to prevent a copy
+func newUser2(firstName string, lastName string, birthDate string) *user {
+	return &user{
+		firstName: firstName,
+		lastName:  lastName,
+		birthdate: birthDate,
+		createdAt: time.Now(),
+	}
+}
+
 func main() {
 	userFirstName := getUserData("Please enter your first name: ")
 	userLastName := getUserData("Please enter your last name: ")
@@ -34,13 +54,10 @@ func main() {
 
 	var appUser user
 
-	//create and instance of the struct and we can omit values, just those values will be set to null example appUser2
-	appUser = user{
-		firstName: userFirstName,
-		lastName:  userLastName,
-		birthdate: userBirthdate,
-		createdAt: time.Now(),
-	}
+	appUser = newUser(userFirstName, userLastName, userBirthdate)
+
+	var appUser2 *user
+	appUser2 = newUser2(userFirstName, userLastName, userBirthdate)
 
 	// ... do something awesome with that gathered data!
 
