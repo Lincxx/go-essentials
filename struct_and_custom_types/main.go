@@ -14,11 +14,17 @@ type user struct {
 }
 
 // attach to struct - the (u user) is called a receiver
-func (u user) outputUserDetails() {
+func (u *user) outputUserDetails() {
 
 	//in the pointer section we were taught to use derefence  *u, to use this we need this (*u).firstName
 	//this is using ths address and not the value of the address, this work because this is a shortcut provided by Go
 	fmt.Println(u.firstName, u.lastName, u.birthdate)
+}
+
+// mutation method - we're only changing the copy (u user) doing this will change the struct (u *user)
+func (u *user) clearUserName() {
+	u.firstName = ""
+	u.lastName = ""
 }
 
 func main() {
@@ -40,6 +46,8 @@ func main() {
 
 	//we don't have to pass an arg, as one is not required anymore. The user struct will be pass automatically to the
 	//method
+	appUser.outputUserDetails()
+	appUser.clearUserName()
 	appUser.outputUserDetails()
 }
 
