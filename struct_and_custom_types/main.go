@@ -12,6 +12,13 @@ func main() {
 	// ... do something awesome with that gathered data!
 
 	fmt.Println(firstName, lastName, birthdate)
+
+	//this can be error prone. Missing value or wrong order. Might prefer a value type that groups item together (Struct)
+	outputUserDetails(firstName, lastName, birthdate)
+}
+
+func outputUserDetails(firstName, lastName, birthdate string) {
+	fmt.Println(firstName, lastName, birthdate)
 }
 
 func getUserData(promptText string) string {
