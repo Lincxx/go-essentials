@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"time"
 )
@@ -28,23 +29,28 @@ func (u *user) clearUserName() {
 }
 
 // Creation / Constructor Functions (Pattern) - NOT A FEATURE BUILT IN GO
-func newUser(firstName string, lastName string, birthDate string) user {
-	return user{
-		firstName: firstName,
-		lastName:  lastName,
-		birthdate: birthDate,
-		createdAt: time.Now(),
-	}
-}
+//func newUser(firstName string, lastName string, birthDate string) user {
+//	return user{
+//		firstName: firstName,
+//		lastName:  lastName,
+//		birthdate: birthDate,
+//		createdAt: time.Now(),
+//	}
+//}
 
+// Creation / Constructor Functions (Pattern) - NOT A FEATURE BUILT IN GO
 // we can return this as a pointer - what this does is to prevent a copy
-func newUser2(firstName string, lastName string, birthDate string) *user {
+func newUser2(firstName string, lastName string, birthDate string) (*user, error) {
+	if firstName == "" || lastName == "" || birthDate == "" {
+		return nil, errors.New("First name, Last name, birthdate required")
+	}
+
 	return &user{
 		firstName: firstName,
 		lastName:  lastName,
 		birthdate: birthDate,
 		createdAt: time.Now(),
-	}
+	}, nil
 }
 
 func main() {
@@ -52,25 +58,30 @@ func main() {
 	userLastName := getUserData("Please enter your last name: ")
 	userBirthdate := getUserData("Please enter your birthdate (MM/DD/YYYY): ")
 
-	var appUser user
-
-	appUser = newUser(userFirstName, userLastName, userBirthdate)
+	//var appUser user
+	//
+	//appUser = newUser(userFirstName, userLastName, userBirthdate)
 
 	var appUser2 *user
-	appUser2 = newUser2(userFirstName, userLastName, userBirthdate)
+	appUser2, err := newUser2(userFirstName, userLastName, userBirthdate)
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 
 	// ... do something awesome with that gathered data!
 
 	//we don't have to pass an arg, as one is not required anymore. The user struct will be pass automatically to the
 	//method
-	appUser.outputUserDetails()
-	appUser.clearUserName()
-	appUser.outputUserDetails()
+	appUser2.outputUserDetails()
+	appUser2.clearUserName()
+	appUser2.outputUserDetails()
 }
 
 func getUserData(promptText string) string {
 	fmt.Print(promptText)
 	var value string
-	fmt.Scan(&value)
+	fmt.Scanln(&value)
 	return value
 }
