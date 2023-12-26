@@ -28,24 +28,18 @@ func main() {
 		createdAt: time.Now(),
 	}
 
-	// last name and birthdate will be set to their null values
-	//var appUser2 user
-	//appUser2 = user{
-	//	firstName: userFirstName,
-	//	createdAt: time.Now(),
-	//}
-
 	// ... do something awesome with that gathered data!
 
-	fmt.Println(userFirstName, userLastName, userBirthdate)
-	fmt.Println(appUser)
+	//fmt.Println(userFirstName, userLastName, userBirthdate)
+	//fmt.Println(appUser)
 
 	//this can be error prone. Missing value or wrong order. Might prefer a value type that groups item together (Struct)
-	//outputUserDetails(firstName, lastName, birthdate)
+	outputUserDetails(appUser)
 }
 
-func outputUserDetails(firstName, lastName, birthdate string) {
-	fmt.Println(firstName, lastName, birthdate)
+func outputUserDetails(u user) {
+	//fmt.Println(firstName, lastName, birthdate)
+	fmt.Println(u.firstName, u.lastName, u.birthdate)
 }
 
 func getUserData(promptText string) string {
