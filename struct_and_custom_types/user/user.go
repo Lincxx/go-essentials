@@ -13,6 +13,13 @@ type User struct {
 	createdAt time.Time
 }
 
+// Struct Embedding
+type Admin struct {
+	email    string
+	password string
+	User
+}
+
 // attach to struct - the (u user) is called a receiver
 func (u *User) OutputUserDetails() {
 
@@ -36,6 +43,20 @@ func (u *User) ClearUserName() {
 //		createdAt: time.Now(),
 //	}
 //}
+
+// this will create a copy of Admin
+func NewAdmin(email, password string) Admin {
+	return Admin{
+		email:    email,
+		password: password,
+		User: User{
+			firstName: "ADMIN",
+			lastName:  "ADMIN",
+			birthdate: "----",
+			createdAt: time.Now(),
+		},
+	}
+}
 
 // Creation / Constructor Functions (Pattern) - NOT A FEATURE BUILT IN GO
 // we can return this as a pointer - what this does is to prevent a copy

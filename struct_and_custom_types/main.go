@@ -23,6 +23,10 @@ func main() {
 		return
 	}
 
+	admin := user.NewAdmin("test@mail.com", "test123")
+	admin.OutputUserDetails()
+	admin.ClearUserName()
+
 	// ... do something awesome with that gathered data!
 
 	//we don't have to pass an arg, as one is not required anymore. The user struct will be pass automatically to the
