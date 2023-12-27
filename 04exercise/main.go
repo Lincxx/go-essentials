@@ -1,7 +1,10 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
+	"strings"
 
 	"example.com/exercise/note"
 )
@@ -29,12 +32,22 @@ func main() {
 
 // helper func
 func getUserInput(prompt string) string {
-	fmt.Println(prompt)
-	var value string
-	//all scan methods are for single words
+	fmt.Printf("%v ", prompt)
+	//var value string
+	//all scan funcs are for single words
 	//fmt.Scanln(&value)
 
-	//more complex saolution
+	//more complex solution - to read longer text input
+	reader := bufio.NewReader(os.Stdin)
+	text, err := reader.ReadString('\n')
 
-	return value
+	if err != nil {
+		return ""
+	}
+
+	//remove line break
+	text = strings.TrimSuffix(text, "\n")
+	text = strings.TrimSuffix(text, "\r")
+
+	return text
 }
