@@ -10,10 +10,12 @@ import (
 )
 
 // recall lowercase is private and upper case is public
+// struct tags - all though we added tags this doesn't mean it will get picked up. We need a package to
+// recognize it, like the Marshal package.
 type Note struct {
-	Title    string
-	Content  string
-	CreateAt time.Time
+	Title    string    `json:"title"`
+	Content  string    `json:"content"`
+	CreateAt time.Time `json:"created_at"`
 }
 
 func (note Note) Display() {
