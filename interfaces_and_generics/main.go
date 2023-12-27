@@ -10,6 +10,11 @@ import (
 	"example.com/note/todo"
 )
 
+// interface - naming convention -  method name plus er
+type saver interface {
+	Save() error
+}
+
 func main() {
 	title, content := getNoteData()
 	todoText := getUserInput("Todo text")
