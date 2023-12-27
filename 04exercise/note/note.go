@@ -9,22 +9,23 @@ import (
 	"time"
 )
 
+// recall lowercase is private and upper case is public
 type Note struct {
-	title    string
-	content  string
-	createAt time.Time
+	Title    string
+	Content  string
+	CreateAt time.Time
 }
 
 func (note Note) Display() {
-	fmt.Printf("Your note titled %v has the following content:\n\n%v\n\n", note.title, note.content)
+	fmt.Printf("Your note titled %v has the following content:\n\n%v\n\n", note.Title, note.Content)
 }
 
 // write to a file
 func (note Note) Save() error {
-	fileName := strings.ReplaceAll(note.title, " ", "_")
-	fileName = strings.ToLower(fileName)
+	fileName := strings.ReplaceAll(note.Title, " ", "_")
+	fileName = strings.ToLower(fileName) + ".json"
 
-	//will convert data into json
+	// will convert data into json  - Marshal will convert and construct if publicly available (The Struct we are using)
 	json, err := json.Marshal(note)
 	if err != nil {
 		return err
@@ -40,8 +41,8 @@ func New(title, content string) (Note, error) {
 	}
 
 	return Note{
-		title:    title,
-		content:  content,
-		createAt: time.Now(),
+		Title:    title,
+		Content:  content,
+		CreateAt: time.Now(),
 	}, nil
 }
