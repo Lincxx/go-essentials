@@ -34,7 +34,7 @@ func main() {
 	}
 
 	todo.Display()
-	err = todo.Save()
+	err = saveData(todo)
 
 	if err != nil {
 		fmt.Println("Saving the note failed.")
@@ -42,15 +42,27 @@ func main() {
 	}
 
 	userNote.Display()
-	err = userNote.Save()
+	err = saveData(userNote)
 
 	if err != nil {
-		fmt.Println("Saving the note failed.")
 		return
 	}
 
-	fmt.Println("Saving the note succeeded!")
 	fmt.Println("Saving the todo succeeded!")
+	fmt.Println("Saving the note succeeded!")
+}
+
+func saveData(data saver) error {
+	//this would be todo.Save or note.Save or whatever you pass in
+	// because our todo and note struct has a func called Save that doesn't take in any args and adheres to the interface
+	err := data.Save()
+
+	if err != nil {
+		fmt.Println("Saving the note failed.")
+		return err
+	}
+
+	return nil
 }
 
 func getNoteData() (string, string) {
