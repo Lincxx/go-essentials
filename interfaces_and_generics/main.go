@@ -78,15 +78,34 @@ func main() {
 
 // he Special "Any Value Allowed" Type
 func printSomething(value interface{}) {
-	switch value.(type) {
-	case int:
-		fmt.Println("Int: ", value)
-	case float64:
-		fmt.Println("Float64: ", value)
-	case string:
-		fmt.Println("String: ", value)
+	//Extracting Type Information From Values
+	intVal, ok := value.(int)
+	if ok {
+		fmt.Println("Integer: ", intVal)
+		return
 	}
-	fmt.Println(value)
+
+	floatVal, ok := value.(float64)
+	if ok {
+		fmt.Println("Integer: ", floatVal)
+		return
+	}
+
+	strVal, ok := value.(string)
+	if ok {
+		fmt.Println("Integer: ", strVal)
+		return
+	}
+
+	// switch value.(type) {
+	// case int:
+	// 	fmt.Println("Int: ", value)
+	// case float64:
+	// 	fmt.Println("Float64: ", value)
+	// case string:
+	// 	fmt.Println("String: ", value)
+	// }
+
 }
 
 func outputData(data outputtable) error {
