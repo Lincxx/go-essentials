@@ -1,8 +1,9 @@
 package main
 
 import (
-	"example.com/exercise/note"
 	"fmt"
+
+	"example.com/exercise/note"
 )
 
 func getNoteData() (string, string) {
@@ -22,13 +23,18 @@ func main() {
 		fmt.Println(err)
 		return
 	}
+
+	userNote.Display()
 }
 
 // helper func
 func getUserInput(prompt string) string {
 	fmt.Println(prompt)
 	var value string
-	fmt.Scanln(&value)
+	//all scan methods are for single words
+	//fmt.Scanln(&value)
+
+	//more complex saolution
 
 	return value
 }
