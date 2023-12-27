@@ -31,6 +31,10 @@ type outputtable interface {
 // }
 
 func main() {
+	// printSomething(1)
+	// printSomething("1")
+	// printSomething(1.2)
+
 	title, content := getNoteData()
 	todoText := getUserInput("Todo text")
 
@@ -68,6 +72,11 @@ func main() {
 
 	fmt.Println("Saving the todo succeeded!")
 	fmt.Println("Saving the note succeeded!")
+}
+
+// he Special "Any Value Allowed" Type
+func printSomething(value interface{}) {
+	fmt.Println(value)
 }
 
 func outputData(data outputtable) error {
