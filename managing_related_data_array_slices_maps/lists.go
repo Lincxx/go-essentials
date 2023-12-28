@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	//Array
@@ -12,4 +14,8 @@ func main() {
 	productNames[2] = "Cool story"
 	fmt.Println(prices[2])
 	fmt.Println(productNames)
+
+	// Slices
+	featuredPrices := prices[1:3]
+	fmt.Println(featuredPrices)
 }
