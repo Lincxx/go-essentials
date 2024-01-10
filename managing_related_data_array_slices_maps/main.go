@@ -21,7 +21,7 @@ func main() {
 
 	userNames = append(userNames, "Jeremy")
 	userNames = append(userNames, "Nathan")
-	fmt.Println(userNames)
+	fmt.Println(userNames) //the first 2 are blank because when we setup the array we gave it an initial value of 2 and then append in 2 more users [ ,,"jeremy","nathan"]
 
 	//---------Making Maps------
 	//courseRatings := map[string]float64{} // this is the Map literal
@@ -35,4 +35,13 @@ func main() {
 
 	courseRatings.output()
 
+	for index, value := range userNames {
+		fmt.Println("Index: ", index)
+		fmt.Println("Value: ", value)
+	}
+
+	for key, value := range courseRatings {
+		fmt.Println("Key: ", key)
+		fmt.Println("Value: ", value)
+	}
 }
