@@ -21,7 +21,7 @@ func main() {
 
 //passing a function as a parameter
 //so the transform parameter is a func that takes ints and return ints
-func transformNumbers(numbers *[]int, transform func(int) int) []int {
+func transformNumbers(numbers *[]int, transform transformFn) []int {
 	dNumebrs := []int{}
 
 	for _, val := range *numbers {
