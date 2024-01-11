@@ -1,41 +1,39 @@
 package main
 
-import (
-	"fmt"
-)
-
-//---------Func types
-type transformFn func(int) int
+import "fmt"
 
 func main() {
-	
-	numbers := []int{1, 2, 3, 4, 5}
 
-	//double every number
-	doubled := transformNumbers(&numbers, double)
-	tripled := transformNumbers(&numbers, triple)
-	fmt.Println(doubled)
-	fmt.Println(tripled)
+	//--------- Variadic Functions
+	//--------- Splitting Slices into Parameter Value
 
+	numbers := []int{1, 10, 15}
+	sum := sumup(numbers...)
+	fmt.Println(sum)
+
+	sum2 := sumup(1, 10, 15, -5)
+	fmt.Println(sum2)
 }
 
-//passing a function as a parameter
-//so the transform parameter is a func that takes ints and return ints
-func transformNumbers(numbers *[]int, transform transformFn) []int {
-	dNumebrs := []int{}
+// take a list of numbers sum them up
+// ---Variadic Functions
+func sumup(numbers ...int) int {
+	sum := 0
 
-	for _, val := range *numbers {
-		dNumebrs = append(dNumebrs, transform(val))
+	for _, value := range numbers {
+		sum += value
 	}
 
-	return dNumebrs
+	return sum
 }
 
-//gen func that doubles
-func double(number int) int {
-	return number * 2
-}
+//--- mixture variadic
+func sumup2(startingVal int, numbers ...int) int {
+	sum := 0
 
-func triple(number int) int {
-	return number * 3
+	for _, value := range numbers {
+		sum += value
+	}
+
+	return sum
 }
